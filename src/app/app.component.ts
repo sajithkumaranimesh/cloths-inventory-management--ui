@@ -4,11 +4,12 @@ import { MenuComponent } from "./common/menu/menu.component";
 import { ManageSupplierComponent } from "./page/supplier/manage-supplier/manage-supplier.component";
 import { ManageCategoryComponent } from "./page/category/manage-category/manage-category.component";
 import { ManageProductComponent } from "./page/product/manage-product/manage-product.component";
+import { AddCategoryComponent } from "./page/category/add-category/add-category.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuComponent, ManageSupplierComponent, ManageCategoryComponent, ManageProductComponent],
+  imports: [RouterOutlet, MenuComponent, ManageSupplierComponent, ManageCategoryComponent, ManageProductComponent, AddCategoryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
