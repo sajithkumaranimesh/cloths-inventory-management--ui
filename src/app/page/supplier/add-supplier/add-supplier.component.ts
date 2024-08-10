@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -8,8 +9,19 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './add-supplier.component.html',
   styleUrl: './add-supplier.component.css'
 })
-export class AddSupplierComponent {
+export class AddSupplierComponent implements OnInit{
 
+  currentDate: string | undefined;
+  currentTime: string | undefined;
+
+
+  ngOnInit(): void {
+    this.currentDate = new Date().toLocaleDateString();
+    console.log(this.currentDate);
+
+    this.currentTime = new Date().toLocaleTimeString();
+    console.log(this.currentTime);
+  }
 
   supplierForm = new FormGroup({
     name: new FormControl('',[Validators.required]),
