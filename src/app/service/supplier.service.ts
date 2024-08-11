@@ -5,9 +5,7 @@ import { Injectable } from "@angular/core";
 
  export class SupplierService{
 
-
     constructor(private http:HttpClient){}
-
 
     persist(supplierObj: any){
         return this.http.post('http://localhost:8080/supplier',supplierObj);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SupplierService } from '../../../service/supplier.service';
 
 @Component({
   selector: 'app-add-supplier',
@@ -9,6 +10,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './add-supplier.component.css'
 })
 export class AddSupplierComponent implements OnInit{
+
+  constructor(private service:SupplierService){}
 
   currentDate: string | undefined;
   currentTime: string | undefined;
@@ -32,6 +35,8 @@ export class AddSupplierComponent implements OnInit{
 
 
   addSupplier(){
-    console.log(this.supplierForm);
+    this.service.persist(this.supplierForm.value).subscribe(response => {
+      console.log(response);
+    })
   }
 }
