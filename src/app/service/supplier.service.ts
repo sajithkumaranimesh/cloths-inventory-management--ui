@@ -18,7 +18,7 @@ import { Injectable } from "@angular/core";
     }
 
     retireveById(id:any){
-        return this.http.get<any>(`http://localhost:8080/supplier${id}`)
+        return this.http.get<any>(`http://localhost:8080/supplier${id}`);
     }
 
     update(supplierObj:any){
