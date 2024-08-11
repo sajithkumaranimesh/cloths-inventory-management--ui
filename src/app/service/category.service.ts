@@ -10,7 +10,7 @@ export class CategoryService{
         return this.http.post('http://localhost:8080/category',categoryObj);
     }
 
-    retrieve(){
+    retrieveAll(){
         return this.http.get<any>('http://localhost:8080/category');
     }
 
@@ -22,7 +22,7 @@ export class CategoryService{
         return this.http.put('http://localhost:8080/category',categoryObj);
     }
 
-    delete(id:any){
+    deleteById(id:any){
         return this.http.delete(`http://localhost:8080/category${id}`);
     }
 }
