@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CategoryService } from '../../../service/category.service';
 
 @Component({
   selector: 'app-add-category',
@@ -9,6 +10,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './add-category.component.css'
 })
 export class AddCategoryComponent implements OnInit{
+
+  constructor(private service:CategoryService){}
 
   currentDate: string | undefined;
   currentTime: string | undefined;
@@ -29,7 +32,9 @@ export class AddCategoryComponent implements OnInit{
   }
 
   addCategory(){
-    console.log(this.categoryForm);
+    this.service.persist(this.categoryForm.value).subscribe(responce => {
+      console.log(responce);
+    });
   }
 
 }

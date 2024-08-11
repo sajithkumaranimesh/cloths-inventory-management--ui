@@ -37,6 +37,6 @@ export class AddSupplierComponent implements OnInit{
   addSupplier(){
     this.service.persist(this.supplierForm.value).subscribe(response => {
       console.log(response);
-    })
+    });
   }
 }
