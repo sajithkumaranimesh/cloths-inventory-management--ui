@@ -1,12 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../../service/product.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-view-product',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './view-product.component.html',
   styleUrl: './view-product.component.css'
 })
-export class ViewProductComponent {
+export class ViewProductComponent implements OnInit{
+
+  public productList:any = [];
+
+  constructor(private service:ProductService){}
+
+  ngOnInit(): void {
+    this.service.retrieveAll().subscribe(response => {
+      this.productList = response.data;
+    });
+  }
 
 }

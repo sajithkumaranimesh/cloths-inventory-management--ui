@@ -18,19 +18,20 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
-      <td>Otto</td>
+    <tr *ngFor="let product of productList; index as i;">
+      <td>{{i+1}}</td>
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.size}}</td>
+      <td>{{product.price}}</td>
+      <td>{{product.stockQuantity}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.supplier_id}}</td>
+      <td>{{product.category_id}}</td>
+      <td>{{product.isAvailable}}</td>
+      <td>{{product.createdAt}}</td>
+      <td>{{product.modifiedAt}}</td>
+      
       <td>
         <!-- Button trigger modal -->
         <button
