@@ -41,27 +41,22 @@
             <label class="input-group-text" for="inputGroupSelect01">hi</label>
             <select formControlName="supplier_id" class="form-select" id="inputGroupSelect01">
               <option selected>Supplier Id</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option *ngFor="let supplier of supplierList;">{{supplier.id}}</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">hi</label>
-            <select formControlName="category_id" class="form-select" id="inputGroupSelect01">
+            <select  formControlName="category_id" class="form-select" id="inputGroupSelect01">
               <option selected>Category Id</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option *ngFor="let category of categoryList;" >{{category.id}}</option>
             </select>
           </div>
           <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">hi</label>
             <select formControlName="isAvailable" class="form-select" id="inputGroupSelect01">
               <option selected>Is Available</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+              <option [ngValue]="true">Yes</option>
+              <option [ngValue]="false">No</option>
             </select>
           </div>
 

@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SupplierService } from '../../../service/supplier.service';
 import { CategoryService } from '../../../service/category.service';
+import { NgFor } from '@angular/common';
+import { ProductService } from '../../../service/product.service';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,NgFor],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
 })
 export class AddProductComponent implements OnInit{
 
-  constructor(private supplierService:SupplierService, private categoryService:CategoryService){}
+  constructor(private service:ProductService, private supplierService:SupplierService, private categoryService:CategoryService){}
 
   public supplierList:any = [];
   public categoryList:any = [];
@@ -49,14 +51,15 @@ export class AddProductComponent implements OnInit{
 
     this.categoryService.retrieveAll().subscribe(responce =>{
       this.categoryList = responce.data;
-      console.log(this.categoryList);
     });
 
   }
 
 
   addProduct(){
-    console.log(this.productForm);
+    this.service.persist(this.productForm.value).subscribe(response =>{
+      console.log(response);
+    });
   }
 
 }
