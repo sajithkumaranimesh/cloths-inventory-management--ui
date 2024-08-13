@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { SupplierService } from '../../../service/supplier.service';
+import { CategoryService } from '../../../service/category.service';
 
 @Component({
   selector: 'app-add-product',
@@ -9,6 +11,11 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './add-product.component.css'
 })
 export class AddProductComponent implements OnInit{
+
+  constructor(private supplierService:SupplierService, private categoryService:CategoryService){}
+
+  public supplierList:any = [];
+  public categoryList:any = [];
 
 
   currentDate: string | undefined;
@@ -29,11 +36,18 @@ export class AddProductComponent implements OnInit{
   });
 
   ngOnInit(): void {
+
     this.currentDate = new Date().toLocaleDateString();
     this.currentTime = new Date().toLocaleTimeString();
 
     this.productForm.controls['createdAt'].setValue(this.currentDate + ' ' + this.currentTime);
     this.productForm.controls['modifiedAt'].setValue(this.currentDate + ' ' + this.currentTime);
+
+    this.supplierService.retrieveAll().subscribe(responce => {
+      this.supplierList = responce.data;
+      console.log(this.supplierList)
+    });
+
   }
 
 
