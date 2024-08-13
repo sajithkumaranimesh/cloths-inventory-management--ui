@@ -45,7 +45,11 @@ export class AddProductComponent implements OnInit{
 
     this.supplierService.retrieveAll().subscribe(responce => {
       this.supplierList = responce.data;
-      console.log(this.supplierList)
+    });
+
+    this.categoryService.retrieveAll().subscribe(responce =>{
+      this.categoryList = responce.data;
+      console.log(this.categoryList);
     });
 
   }
