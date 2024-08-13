@@ -12,13 +12,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
+    <tr *ngFor="let category of categoryList; index as i;">
+      <td>{{i+1}}</td>
+      <td>{{category.id}}</td>
+      <td>{{category.name}}</td>
+      <td>{{category.description}}</td>
+      <td>{{category.createdAt}}</td>
+      <td>{{category.modifiedAt}}</td>
       <td>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal"><i

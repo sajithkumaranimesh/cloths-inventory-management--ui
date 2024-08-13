@@ -18,7 +18,6 @@ export class ViewSupplierComponent implements OnInit{
   ngOnInit(): void {
     this.service.retrieveAll().subscribe(response =>{
       this.supplierList = response.data;
-      console.log(this.supplierList);
     })
   }
 
