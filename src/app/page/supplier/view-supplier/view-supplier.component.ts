@@ -1,12 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SupplierService } from '../../../service/supplier.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-view-supplier',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './view-supplier.component.html',
   styleUrl: './view-supplier.component.css'
 })
-export class ViewSupplierComponent {
+export class ViewSupplierComponent implements OnInit{
+
+  public supplierList:any = [];
+
+  constructor(private service:SupplierService){}
+
+  ngOnInit(): void {
+    this.service.retrieveAll().subscribe(response =>{
+      this.supplierList = response.data;
+      console.log(this.supplierList);
+    })
+  }
+
+
 
 }

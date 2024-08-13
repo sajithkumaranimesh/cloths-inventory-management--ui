@@ -13,14 +13,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
-      <td>Mark</td>
+    <tr *ngFor="let supplier of supplierList; index as i;">
+      <td>{{i+1}}</td>
+      <td>{{supplier.id}}</td>
+      <td>{{supplier.name}}</td>
+      <td>{{supplier.email}}</td>
+      <td>{{supplier.company}}</td>
+      <td>{{supplier.createdAt}}</td>
+      <td>{{supplier.modifiedAt}}</td>
       <td>
         <!-- Button trigger modal -->
         <button
