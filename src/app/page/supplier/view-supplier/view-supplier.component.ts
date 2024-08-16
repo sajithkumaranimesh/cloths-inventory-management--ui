@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { SupplierService } from '../../../service/supplier.service';
 import { NgFor } from '@angular/common';
 
+@Injectable({providedIn:'root'})
 @Component({
   selector: 'app-view-supplier',
   standalone: true,
