@@ -10,5 +10,6 @@ import { AddProductComponent } from "../add-product/add-product.component";
   styleUrl: './manage-product.component.css'
 })
 export class ManageProductComponent {
+viewProduct: any;
 
 }

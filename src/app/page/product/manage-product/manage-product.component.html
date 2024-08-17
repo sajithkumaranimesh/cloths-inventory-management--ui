@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row">
         <H1>Product Details</H1>
-        <app-add-product></app-add-product>
+        <app-add-product (productAdded)="viewProduct.ngOnInit()"></app-add-product>
     </div>
     <div class="row mt-3">
         <div class="col-6">
-            <app-view-product></app-view-product>
+            <app-view-product #viewProduct></app-view-product>
         </div>
     </div>
 </div>
