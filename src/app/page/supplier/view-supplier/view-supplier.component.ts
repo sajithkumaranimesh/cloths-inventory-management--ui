@@ -45,4 +45,10 @@ export class ViewSupplierComponent implements OnInit{
     });
   }
 
+  saveEditSupplier(){
+    this.service.update(this.selectedSupplierForm.value).subscribe(response =>{
+      this.ngOnInit();
+    })
+  }
+
 }
