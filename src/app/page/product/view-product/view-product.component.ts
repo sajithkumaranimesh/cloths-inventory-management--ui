@@ -2,27 +2,42 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { ProductService } from '../../../service/product.service';
 import { NgFor } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { SupplierService } from '../../../service/supplier.service';
+import { CategoryService } from '../../../service/category.service';
 
-@Injectable({providedIn:'root'})
+@Injectable({ providedIn: 'root' })
 @Component({
   selector: 'app-view-product',
   standalone: true,
-  imports: [NgFor,ReactiveFormsModule],
+  imports: [NgFor, ReactiveFormsModule],
   templateUrl: './view-product.component.html',
-  styleUrl: './view-product.component.css'
+  styleUrl: './view-product.component.css',
 })
-export class ViewProductComponent implements OnInit{
+export class ViewProductComponent implements OnInit {
+  public productList: any = [];
 
-  public productList:any = [];
+  public supplierList: any = [];
+  public categoryList: any = [];
 
-  constructor(private service:ProductService){}
+  constructor(
+    private service: ProductService,
+    private supplierService: SupplierService,
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit(): void {
-    this.service.retrieveAll().subscribe(response => {
+    this.service.retrieveAll().subscribe((response) => {
       this.productList = response.data;
     });
-  }
 
+    this.supplierService.retrieveAll().subscribe((responce) => {
+      this.supplierList = responce.data;
+    });
+
+    this.categoryService.retrieveAll().subscribe((responce) => {
+      this.categoryList = responce.data;
+    });
+  }
 
   selectedProductForm = new FormGroup({
     id: new FormControl(),
@@ -38,8 +53,7 @@ export class ViewProductComponent implements OnInit{
     supplier_id: new FormControl(),
   });
 
-
-  onEditProduct(product:any){
+  onEditProduct(product: any) {
     this.selectedProductForm.patchValue({
       id: product.id,
       name: product.name,
@@ -52,12 +66,14 @@ export class ViewProductComponent implements OnInit{
       modifiedAt: product.modifiedAt,
       category_id: product.category_id,
       supplier_id: product.supplier_id,
-    })
+    });
   }
 
-  saveEditProduct(){
-    this.service.update(this.selectedProductForm.value).subscribe(response => {
-      this.ngOnInit();
-    })
+  saveEditProduct() {
+    this.service
+      .update(this.selectedProductForm.value)
+      .subscribe((response) => {
+        this.ngOnInit();
+      });
   }
 }
