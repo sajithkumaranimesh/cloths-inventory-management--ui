@@ -1,12 +1,14 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { SupplierService } from '../../../service/supplier.service';
 import { NgFor } from '@angular/common';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+
 
 @Injectable({providedIn:'root'})
 @Component({
   selector: 'app-view-supplier',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,ReactiveFormsModule],
   templateUrl: './view-supplier.component.html',
   styleUrl: './view-supplier.component.css'
 })
@@ -22,6 +24,25 @@ export class ViewSupplierComponent implements OnInit{
     })
   }
 
+  selectedSupplierForm = new FormGroup({
+    id: new FormControl(),
+    name: new FormControl(),
+    email: new FormControl(),
+    company: new FormControl(),
+    createdAt: new FormControl(),
+    modifiedAt: new FormControl()
+  });
 
+
+  onEditSupplier(supplier: any) {
+    this.selectedSupplierForm.patchValue({
+      id: supplier.id,
+      name: supplier.name,
+      email: supplier.email,
+      company: supplier.company,
+      createdAt: supplier.createdAt,
+      modifiedAt: supplier.modifiedAt
+    });
+  }
 
 }
