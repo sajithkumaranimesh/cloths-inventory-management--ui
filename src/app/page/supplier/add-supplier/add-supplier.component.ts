@@ -16,10 +16,6 @@ import { ViewSupplierComponent } from '../view-supplier/view-supplier.component'
   styleUrl: './add-supplier.component.css',
 })
 export class AddSupplierComponent implements OnInit {
-  constructor(
-    private service: SupplierService,
-    private viewSupplier:ViewSupplierComponent
-  ) {}
 
   currentDate: string | undefined;
   currentTime: string | undefined;
@@ -31,6 +27,11 @@ export class AddSupplierComponent implements OnInit {
     createdAt: new FormControl(''),
     modifiedAt: new FormControl(''),
   });
+
+  constructor(
+    private service: SupplierService,
+    private viewSupplier:ViewSupplierComponent
+  ) {}
 
   ngOnInit(): void {
     this.currentDate = new Date().toLocaleDateString();

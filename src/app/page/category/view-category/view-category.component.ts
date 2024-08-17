@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { CategoryService } from '../../../service/category.service';
 import { NgFor } from '@angular/common';
 
+@Injectable({providedIn: 'root'})
 @Component({
   selector: 'app-view-category',
   standalone: true,

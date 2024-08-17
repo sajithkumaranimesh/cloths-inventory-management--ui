@@ -2,7 +2,9 @@
   <div class="row">
     <h1>SUPPLIER DETAILS</h1>
     <!-- Bind the supplierAdded event to trigger the loadSuppliers method in ViewSupplierComponent -->
-    <app-add-supplier (supplierAdded)="viewSupplier.ngOnInit()"></app-add-supplier>
+    <app-add-supplier
+      (supplierAdded)="viewSupplier.ngOnInit()"
+    ></app-add-supplier>
   </div>
   <div class="row mt-3">
     <div class="col-9">
