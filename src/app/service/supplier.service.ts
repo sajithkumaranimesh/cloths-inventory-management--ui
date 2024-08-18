@@ -24,7 +24,7 @@ import { Injectable } from "@angular/core";
     }
 
     deleteById(id:any){
-        return this.http.delete(`http://localhost:8080/supplie${id}r`);
+        return this.http.delete(`http://localhost:8080/supplier${id}`);
     }
  }
 

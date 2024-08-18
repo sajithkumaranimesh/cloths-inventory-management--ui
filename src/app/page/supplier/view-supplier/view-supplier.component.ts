@@ -51,4 +51,10 @@ export class ViewSupplierComponent implements OnInit{
     })
   }
 
+  onDeleteSupplier(id:any){
+    this.service.deleteById(id).subscribe(response => {
+      this.ngOnInit();
+    })
+  }
+
 }
