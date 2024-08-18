@@ -76,4 +76,10 @@ export class ViewProductComponent implements OnInit {
         this.ngOnInit();
       });
   }
+
+  onDeleteProduct(id:any){
+    this.service.deleteById(id).subscribe(response => {
+      this.ngOnInit();
+    })
+  }
 }
