@@ -46,4 +46,10 @@ export class ViewCategoryComponent implements OnInit{
       this.ngOnInit();
     });
   }
+
+  onDeleteCategory(id:any){
+    this.service.deleteById(id).subscribe(response => {
+      this.ngOnInit();
+    })
+  }
 }
